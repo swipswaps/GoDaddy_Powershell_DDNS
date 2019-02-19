@@ -73,7 +73,7 @@ echo $name"."$domain": $(date): $type: dnsIp:" $dnsIp
 if [ $dnsIp != $currentIp ];
  then
         echo $name"."$domain": $(date): $type: IPs not equal. Updating."
-        request='{"data":"'$currentIp'","ttl":3600}'
+        request='[{"data":"'$currentIp'","ttl":3600}]'
         #echo $request
         nresult=$(curl -i -k -s -X PUT \
  -H "$headers" \
