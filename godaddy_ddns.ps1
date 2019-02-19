@@ -25,6 +25,6 @@ $currentIp = Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 if ( $currentIp -ne $dnsIp) {
     $Request = @{ttl=3600;data=$currentIp }
     $JSON = Convertto-Json $request
-    Invoke-WebRequest https://api.godaddy.com/v1/domains/$domain/records/A/$name -method put -headers $headers -Body $json -ContentType "application/json"
+    Invoke-WebRequest https://api.godaddy.com/v1/domains/$domain/records/A/$name -method put -headers $headers -Body [$json] -ContentType "application/json"
 }
 
